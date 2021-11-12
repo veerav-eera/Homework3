@@ -1,5 +1,4 @@
 const pg = require('pg');
-const logger = require("../model/logging");
 
 let connection;
 exports.connect = function (connectionString) {
