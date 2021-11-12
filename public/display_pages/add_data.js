@@ -1,6 +1,8 @@
+const baseUrl =  window.location.protocol + "//" + window.location.host;
+
 function create_user(username1,password1,Email1){
     if (password_regex.test(password1) && email_regex.test(Email1) && (username1 != "" || null) && username_regex.test(username1)) {
-        axios.post("http://localhost:8082/user2", {
+        axios.post(baseUrl+`/user2`, {
             username: username1,
             password: password1,
             email: Email1

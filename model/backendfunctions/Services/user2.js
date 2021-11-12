@@ -3,7 +3,7 @@ const db = require("../config/databse_config2");
 const user = {
     //add new users
     add_user : function(Accountholdername, email, password,callback){
-                db.runquery("insert into accounts(Accountholdername, email, Approvability, password) values(?,?,?,?);",[Accountholdername, email, "user", password],(error, results) => {
+                db.runquery("insert into accounts(Accountholdername, email, Approvability, password) values($1,$2,$3,$4);",[Accountholdername, email, "user", password],(error, results) => {
                     if (error) {
                         callback(error, null);
                     }

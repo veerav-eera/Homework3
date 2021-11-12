@@ -7,8 +7,8 @@ const logger = require("./model/backendfunctions/middleware/logging")
 var database = require('./model/backendfunctions/config/databse_config2')
 
 database.connect('postgres://fjhfhvhk:7wUJ0CQMOFFhvUJWKyo5cj1AYAeQvP3U@fanny.db.elephantsql.com/fjhfhvhk')
-var port = process.env.PORT || 8001;
-
+//var port = process.env.PORT || 8001;
+var port = 8001
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -25,5 +25,5 @@ app.use((req, res) => {
 });
 
 var server = app.listen(port, () => {
-    logger.info('Web App Hosted at http://localhost:' + port);
+    logger.info('Web App Hosted at http://localhost:'+port);
 });

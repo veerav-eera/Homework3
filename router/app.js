@@ -16,8 +16,9 @@ var user = require('../model/backendfunctions/Services/users');
 var user2 = require('../model/backendfunctions/Services/user2');
 var logging = require("../model/backendfunctions/middleware/logging");
 //
-app.get("/api/allitems/", (req, res) => {
+app.get("/api/allitems", (req, res) => {
     //edit What you need here
+    console.log("hello")
     logging.info("api: get all users \n");
     inventory.load_all_items((error, results) => {
         if (error) {
@@ -26,7 +27,7 @@ app.get("/api/allitems/", (req, res) => {
             res.status(500).send(error);
         } else {
             logging.info("no error found")
-            res.status(200).send(results);
+            res.status(200).send(results.rows);
         }
     });
     logging.info("Api ended \n\n\n");

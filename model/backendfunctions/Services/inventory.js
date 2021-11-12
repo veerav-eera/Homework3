@@ -7,7 +7,7 @@ const inventory = {
     // callback(error?, result?) alwa
     load_all_items: function (callback) {
                 const get_inventory = "select Accountholdername from accounts;"
-                db.runquery(get_inventory,(error, results) => {
+                db.runquery(get_inventory,[],(error, results) => {
                     if (error) {
                         callback(error, /*no result*/null);
                     }
