@@ -5,7 +5,7 @@ var cors = require("cors")
 var app = require('./router/app');
 const logger = require("./model/backendfunctions/middleware/logging")
 
-var port = process.env.PORT || 8001;
+var port = process.env.PORT || 5000;
 
 
 app.use(express.json());
@@ -17,9 +17,9 @@ app.use(cors());
 // Handle 404 - Keep this as a last route
 app.use((req, res) => {
     res.status(404);
-    res.redirect(`${"http://localhost:" + port}/error.html`)
+    res.redirect(`${"http://localhost:" + port}/display_pages/displaypage.html`)
 });
 
 var server = app.listen(port, () => {
-    logger.info('Web App Hosted at http://localhost:' + port+"/display_pages/displaypage.html");
+    logger.info('Web App Hosted at http://localhost:8001/display_pages/displaypage.html');
 });
