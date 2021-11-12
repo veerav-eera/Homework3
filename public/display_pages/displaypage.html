@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCA Carnival</title>
+    <link rel="stylesheet" href="./Display.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!--<meta http-equiv="refresh" content="5">-->
+    <script src="./Getdata.js"></script>
+    <script src="./add_data.js"></script>
+</head>
+
+<body onload="fetchusers()">
+    <!--This is a nav bar with. Comments are not displayed in the browser-->
+
+    <!--Loaning base-->
+    <label for="cars">Choose a user:</label>
+    <select id="Available_items" name="">
+    </select>
+    <!--adding to the database-->
+    <label for="name">First name:</label><br>
+    <input type="text" id="name" name="name"><br>
+    <label for="Email">Email:</label><br>
+    <input type="text" id="Email" name="Email"><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br>
+    <Button id="createuser" onclick="createuser()">user add</Button>
+</body>
+
+</html>
