@@ -10,7 +10,7 @@ var port = process.env.PORT || 8001;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static("public"));
+app.use(express.static("public/display_pages"));
 app.options('*', cors());
 app.use(cors());
 
