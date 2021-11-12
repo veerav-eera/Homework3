@@ -5,7 +5,7 @@ var cors = require("cors")
 var app = require('./router/app');
 const logger = require("./model/backendfunctions/middleware/logging")
 
-var port = server.listen(process.env.PORT || 8001);
+var port = process.env.PORT || 8001;
 
 
 app.use(express.json());
