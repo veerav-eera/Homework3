@@ -21,5 +21,5 @@ app.use((req, res) => {
 });
 
 var server = app.listen(port, () => {
-    logger.info('Web App Hosted at http://localhost:' + port+"/display_pages/displaypage.html");
+    logger.info('Web App Hosted at http://localhost:' + port);
 });
