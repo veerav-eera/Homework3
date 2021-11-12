@@ -4,12 +4,16 @@ var express = require("express")
 var cors = require("cors")
 var app = require('./router/app');
 const logger = require("./model/backendfunctions/middleware/logging")
+var database = require('./model/backendfunctions/config/databse_config2')
 
+database.connect('postgres://fjhfhvhk:7wUJ0CQMOFFhvUJWKyo5cj1AYAeQvP3U@fanny.db.elephantsql.com/fjhfhvhk')
 var port = process.env.PORT || 8001;
 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+//searches for the folder then the specific file name
+//parent folder
 app.use(express.static("public/display_pages"));
 app.options('*', cors());
 app.use(cors());

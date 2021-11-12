@@ -1,21 +1,32 @@
-//database driver (allows the backend server to connect to the database)
-var mysql = require('mysql');
+const pg = require('pg');
+const logger = require("../model/logging");
 
-let connection= mysql.createPool({
-    host: "localhost",//known ip
-    user: "root",
-    password: "password",
-    database: "OnlineAsset2002103",
-    dateStrings: true
-});
-
-var dbconnect = {
-    runquery :function(Query,parms,callback){
-            connection.query(Query,parms,function(err, rows) {
-                 callback(err, rows)
-            })
+let connection;
+exports.connect = function (connectionString) {
+    if (connection) {
+      const oldConnection = connection;
+      connection = null;
+      return oldConnection.end().then(() => exports.connect(connectionString));
     }
-};
+    
+    connection = new pg.Client({
+      connectionString,
+    });
+    return connection.connect().catch(function (error) {
+      connection = null;
+      throw error;
+    });
+  };
+  
 
-
-module.exports = dbconnect;
+  exports.runquery = function (text, params, callback) {
+    if (!connection) {
+      return callback(new Error('Not connected to database'));
+    }
+    const start = Date.now();
+    return connection.query(text, params, function (error, result) {
+      const duration = Date.now() - start;
+      console.log('executed query', { text, duration });
+      callback(error, result);
+    });
+  };

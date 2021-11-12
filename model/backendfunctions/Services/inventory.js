@@ -1,19 +1,13 @@
-const db = require("../config/databaseConfig");
 var logging = require("../middleware/logging")
+const db = require("../config/databse_config2");
+
 const inventory = {
     // FRONT END ===================================================================
     // details.html display individual game rating
     // callback(error?, result?) alwa
     load_all_items: function (callback) {
-        var dbConn = db.getConnection();
-        dbConn.connect(function (err) {
-            if (err) {//database connection gt issue!
-                console.log(err);
-                callback(err, null);
-            } else {
                 const get_inventory = "select Accountholdername from accounts;"
-                dbConn.query(get_inventory,(error, results) => {
-                    dbConn.end();
+                db.runquery(get_inventory,(error, results) => {
                     if (error) {
                         callback(error, /*no result*/null);
                     }
@@ -25,8 +19,6 @@ const inventory = {
                     }
                 });
             }
-        });
-    },
 }
 
 module.exports = inventory;
